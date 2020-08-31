@@ -3,10 +3,11 @@ using System.Collections.Generic;
 
 namespace SortingAlgorithms
 {
-    public static class BubbleSorting
+    public  class BubbleSorting : Sorting
     {
-        public static int[] BubbleSort(int[] unsortedArray)
+        public override int[] Sort(int[] unsortedArray)
         {
+           
             int temp;
             for (int i = 0; i < unsortedArray.Length - 2; ++i)
             {
@@ -24,8 +25,6 @@ namespace SortingAlgorithms
             
             return unsortedArray;
         }
-
-       
-
+        
     }
 }
