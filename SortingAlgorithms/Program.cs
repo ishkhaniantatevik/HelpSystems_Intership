@@ -2,14 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
-
+using System.Runtime.CompilerServices;
 
 
 namespace SortingAlgorithms
 {
     class Program
     {
+        public EventHandler UpdateProgress;
         static void Main(string[] args)
         {
             Console.WriteLine("Please enter the size of an array that you want to sort");
@@ -33,25 +33,28 @@ namespace SortingAlgorithms
                 
                 var watch1 = new System.Diagnostics.Stopwatch();
                 watch1.Start();
-                var sortedBubbleSort = BubbleSorting.BubbleSort(unsortedArray);
+                Sorting bubbleSorting = new BubbleSorting();
+                var sortedByBubbleSort =   bubbleSorting.Sort(unsortedArray);
                 watch1.Stop();
                 var time1 = watch1.ElapsedMilliseconds;
                 
-                Print(sortedBubbleSort);
+                bubbleSorting.Print(sortedByBubbleSort);
                 
                 var watch2 = new System.Diagnostics.Stopwatch();
                 watch2.Start();
-                var sortedByInsertionSort = InsertionSorting.InsertionSort(unsortedArray);
+                Sorting insertionSorting = new InsertionSorting();
+                var sortedByInsertionSort = insertionSorting.Sort(unsortedArray);
                 watch2.Stop();
                 var time2 = watch2.ElapsedMilliseconds;
-                Print(sortedByInsertionSort);
+                insertionSorting.Print(sortedByInsertionSort);
                 
                 var watch3 = new System.Diagnostics.Stopwatch();
                 watch3.Start();
-                var sortedByMergeSort = MergeSorting.MergeSort(unsortedArray);
+                Sorting mergeSorting = new MergeSorting();
+                var sortedByMergeSort = mergeSorting.Sort(unsortedArray);
                 watch3.Stop();
                 var time3 = watch3.ElapsedMilliseconds;
-                Print(sortedByMergeSort);
+                mergeSorting.Print(sortedByMergeSort);
                 
                 Console.WriteLine($"Execution Time for Bubble Sort: {time1} ms");
                 Console.WriteLine($"Execution Time for Insertion Sort: {time2} ms");
@@ -67,39 +70,35 @@ namespace SortingAlgorithms
                     case "1" :
                         var watch1 = new System.Diagnostics.Stopwatch();
                         watch1.Start();
-                        var sortedBubbleSort = BubbleSorting.BubbleSort(unsortedArray);
+                        Sorting bubbleSorting = new BubbleSorting();
+                        var sortedByBubbleSort =   bubbleSorting.Sort(unsortedArray);
                         watch1.Stop();
                         Console.WriteLine($"Execution Time for Bubble Sort: {watch1.ElapsedMilliseconds} ms");
-                        Print(sortedBubbleSort);
+                        bubbleSorting.Print(sortedByBubbleSort);
                         break;
                     case "2" :
                         var watch2 = new System.Diagnostics.Stopwatch();
                         watch2.Start();
-                        var sortedByInsertionSort = InsertionSorting.InsertionSort(unsortedArray);
+                        Sorting insertionSorting = new InsertionSorting();
+                        var sortedByInsertionSort = insertionSorting.Sort(unsortedArray);
                         watch2.Stop();
                         Console.WriteLine($"Execution Time for Insertion Sort: {watch2.ElapsedMilliseconds} ms");
-                        Print(sortedByInsertionSort);
+                        insertionSorting.Print(sortedByInsertionSort);
                         break;
                     case "3" :
                         var watch3 = new System.Diagnostics.Stopwatch();
                         watch3.Start();
-                        var sortedByMergeSort = MergeSorting.MergeSort(unsortedArray);
+                        Sorting mergeSorting = new MergeSorting();
+                        var sortedByMergeSort = mergeSorting.Sort(unsortedArray);
                         watch3.Stop();
                         Console.WriteLine($"Execution Time for Merge Sort: {watch3.ElapsedMilliseconds} ms");
-                        Print(sortedByMergeSort);
+                        mergeSorting.Print(sortedByMergeSort);
                         break;
  
                 }
             }
             
         }
-        public static void Print(int[] sortedArray)
-        {
-            foreach (var i in sortedArray)
-            {
-                Console.Write(i + " ");
-            }
-            Console.WriteLine();
-        }
+      
     }
 }
