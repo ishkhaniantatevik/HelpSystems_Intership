@@ -5,9 +5,9 @@ using System.Transactions;
 
 namespace SortingAlgorithms
 {
-    public static  class MergeSorting 
+    public class MergeSorting : Sorting
     {
-        public static int[] MergeSort(int[] unsortedList)
+        public override int[] Sort(int[] unsortedList)
         {
             if (unsortedList.Length <= 1)
                 return unsortedList;
@@ -39,8 +39,8 @@ namespace SortingAlgorithms
                 ++x;
             }
             
-            left = MergeSort(left);
-            right = MergeSort(right);
+            left = Sort(left);
+            right = Sort(right);
             
             return Merge(left, right);
         }
