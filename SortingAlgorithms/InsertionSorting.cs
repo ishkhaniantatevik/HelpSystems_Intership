@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace SortingAlgorithms
 {
-    public static class InsertionSorting
+    public  class InsertionSorting : Sorting
     {
-        public static int[] InsertionSort(int[] unsortedArray)
+        public override int[] Sort(int[] unsortedArray)
         {
             for (int i = 0; i < unsortedArray.Length-1; i++) 
             {
