@@ -1,5 +1,7 @@
-
 using System;
+using System.Net;
+using System.IO;
+using System.Text.Json;
 
 namespace MobileHierarchy
 {
@@ -7,7 +9,16 @@ namespace MobileHierarchy
     {
         static void Main(string[] args)
         {
-            Mobile Iphone9 = new Iphone();
+            string JsonFileName = "Mobile.txt";
+            Mobile Iphone9 = new Iphone()
+            {
+                OwnerFirstName = "Tatevik",
+                OwnerLastName = "Ishkhanyan",
+                Number = "123456789"
+                
+            };
+            SaveAsJsonFormat(Iphone9, JsonFileName);
+            
             Iphone9.Display();
             Iphone9.Call();
             Iphone9.TakePhoto();
@@ -23,5 +34,16 @@ namespace MobileHierarchy
             NokiaX6.TakePhoto();
             
         }
+
+        public static void SaveAsJsonFormat(object objGraph, string fileName)
+        {
+            string jsonString = JsonSerializer.Serialize(objGraph);
+            File.WriteAllText(fileName,jsonString);
+            Console.WriteLine();
+            Console.WriteLine("Saved a Mobile With JSON Format");
+            
+        }
     }
+    
+   
 }
